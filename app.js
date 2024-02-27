@@ -36,7 +36,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
           .concat(inputPath)
           .output(outputPath)
           .on('end', resolve)
-          .on('error', reject)
+          .on('erro', reject)
           .run();
       });
 
@@ -47,7 +47,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
       await collection.updateOne({ _id: videoId }, { $set: { status: 'completed', url: `http://localhost:3000/output/${videoId}.mp4` } });
      
     } catch (erro) {
-      console.error(erro);
+      console.erro(erro);
 
       await client.connect();
       const db = client.db('video_db');
